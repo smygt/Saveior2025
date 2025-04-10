@@ -1,0 +1,56 @@
+services:
+  frontend:
+    build:
+      context: ./SAVEIOR_FE
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - saveior-network
+
+  backend:
+    build:
+      context: ./SAVEIOR_API
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./SAVEIOR_API/.env
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/saveior
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - saveior-network
+
+  db:
+    build:
+      context: ./SAVEIOR_DB
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=saveior
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - saveior-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+networks:
+  saveior-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

@@ -1,0 +1,54 @@
+# --- General ---
+.DS_Store
+*.swp
+*.log
+*.tmp
+*.bak
+
+# --- IDEs / Editors ---
+.vscode/
+.idea/
+
+# --- Python / FastAPI (SAVEIOR_API) ---
+SAVEIOR_API/__pycache__/
+SAVEIOR_API/*.py[cod]
+SAVEIOR_API/*.so
+SAVEIOR_API/*.egg-info/
+SAVEIOR_API/.env
+SAVEIOR_API/.env.*
+SAVEIOR_API/venv/
+SAVEIOR_API/env/
+SAVEIOR_API/.venv/
+SAVEIOR_API/dist/
+SAVEIOR_API/build/
+SAVEIOR_API/htmlcov/
+SAVEIOR_API/.pytest_cache/
+SAVEIOR_API/.mypy_cache/
+SAVEIOR_API/*.cover
+SAVEIOR_API/coverage.xml
+SAVEIOR_API/*.log
+
+# --- Node / Next.js (SAVEIOR_FE) ---
+SAVEIOR_FE/node_modules/
+SAVEIOR_FE/.next/
+SAVEIOR_FE/out/
+SAVEIOR_FE/.vercel/
+SAVEIOR_FE/npm-debug.log*
+SAVEIOR_FE/yarn-debug.log*
+SAVEIOR_FE/yarn-error.log*
+SAVEIOR_FE/pnpm-debug.log*
+SAVEIOR_FE/dist/
+SAVEIOR_FE/.env.local
+SAVEIOR_FE/.env.development.local
+SAVEIOR_FE/.env.test.local
+SAVEIOR_FE/.env.production.local
+SAVEIOR_FE/*.tsbuildinfo
+
+# --- DB or Infrastructure Files (SAVEIOR_DB) ---
+SAVEIOR_DB/*.log
+SAVEIOR_DB/.env
+SAVEIOR_DB/.env.*
+
+# Optional: ignore SQLite or local DB files
+SAVEIOR_DB/*.sqlite3
+SAVEIOR_DB/*.db
